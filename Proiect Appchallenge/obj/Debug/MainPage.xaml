@@ -15,8 +15,8 @@
                 </Image.RenderTransform>
             </Image>
 
-            <Button x:ConnectionId='1' x:Name="loadButton" Content="Load image" HorizontalAlignment="Left" Margin="1031,110,0,0" VerticalAlignment="Top" Height="131" Width="245" FontSize="36"                         />
-            <Button x:ConnectionId='2' Content="Save As&#xA;" HorizontalAlignment="Left" Margin="1109,323,0,0" VerticalAlignment="Top" Height="63" Width="138"                     />
+            <Button x:ConnectionId='0' x:Name="loadButton" Content="Load image" HorizontalAlignment="Left" Margin="1031,110,0,0" VerticalAlignment="Top" Height="131" Width="245" FontSize="36"                         />
+            <Button x:ConnectionId='0' Content="Save As&#xA;" HorizontalAlignment="Left" Margin="1109,323,0,0" VerticalAlignment="Top" Height="63" Width="138"                     />
             <TextBox x:Name="Textbox1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Margin="876,89,0,0" Width="339"/>
 
             <ScrollViewer x:Name="scrollPanel" VerticalScrollMode="Disabled" HorizontalAlignment="Left" Height="200" Margin="0,568,0,0" VerticalAlignment="Top" Width="1366" ZoomMode="Disabled" IsTabStop="False" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden" Padding="0,0,0,0">
