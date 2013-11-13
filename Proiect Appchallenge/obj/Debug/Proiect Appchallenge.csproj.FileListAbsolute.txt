@@ -92,3 +92,34 @@ C:\Users\Sebastian\Desktop\PicBox_V1\Proiect Appchallenge\obj\Debug\qualifiers.t
 C:\Users\Sebastian\Desktop\PicBox_V1\Proiect Appchallenge\obj\Debug\qualifiers.txt.intermediate
 C:\Users\Sebastian\Desktop\PicBox_V1\Proiect Appchallenge\obj\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\Sebastian\Desktop\PicBox_V1\Proiect Appchallenge\obj\Debug\ProjectArchitectures.txt
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\bin\Debug\App.xbf
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\bin\Debug\MainPage.xbf
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\bin\Debug\Proiect Appchallenge.exe
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\bin\Debug\Proiect Appchallenge.pdb
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\bin\Debug\resources.pri
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\bin\Debug\AppxManifest.xml
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\bin\Debug\Proiect Appchallenge.build.appxrecipe
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\obj\Debug\App.g.i.cs
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\obj\Debug\App.g.cs
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\obj\Debug\MainPage.g.i.cs
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\obj\Debug\MainPage.g.cs
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\obj\Debug\XamlTypeInfo.g.cs
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\obj\Debug\App.xaml
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\obj\Debug\MainPage.xaml
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\obj\Debug\App.xbf
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\obj\Debug\MainPage.xbf
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\obj\Debug\XamlSaveStateFile.xml
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\obj\Debug\Proiect Appchallenge.exe
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\obj\Debug\Proiect Appchallenge.pdb
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\obj\Debug\priconfig.xml
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\obj\Debug\priconfig.xml.intermediate
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\obj\Debug\layout.resfiles
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\obj\Debug\layout.resfiles.intermediate
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\obj\Debug\resources.resfiles
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\obj\Debug\resources.resfiles.intermediate
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\obj\Debug\pri.resfiles
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\obj\Debug\pri.resfiles.intermediate
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\obj\Debug\qualifiers.txt
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\obj\Debug\qualifiers.txt.intermediate
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\obj\Debug\MultipleQualifiersPerDimensionFound.txt
+C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\obj\Debug\ProjectArchitectures.txt

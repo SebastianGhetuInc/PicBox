@@ -8,38 +8,38 @@
     <PackageIdentityName>0b452331-ca64-4154-ac1b-f771b8f301a4</PackageIdentityName>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\Sebastian\Desktop\PicBox_V1\Proiect Appchallenge\bin\Debug\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\Sebastian\Desktop\PicBox_V1\Proiect Appchallenge\bin\Debug\Proiect Appchallenge.exe">
+    <AppxPackagedFile Include="C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\bin\Debug\Proiect Appchallenge.exe">
       <PackagePath>Proiect Appchallenge.exe</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sebastian\Desktop\PicBox_V1\Proiect Appchallenge\Assets\Logo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\Assets\Logo.scale-100.png">
       <PackagePath>Assets\Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sebastian\Desktop\PicBox_V1\Proiect Appchallenge\Assets\SmallLogo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\Assets\SmallLogo.scale-100.png">
       <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sebastian\Desktop\PicBox_V1\Proiect Appchallenge\Assets\SplashScreen.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\Assets\SplashScreen.scale-100.png">
       <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sebastian\Desktop\PicBox_V1\Proiect Appchallenge\Assets\StoreLogo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\Assets\StoreLogo.scale-100.png">
       <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sebastian\Desktop\PicBox_V1\Proiect Appchallenge\bin\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\bin\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sebastian\Desktop\PicBox_V1\Proiect Appchallenge\bin\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\bin\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sebastian\Desktop\PicBox_V1\Proiect Appchallenge\bin\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>
