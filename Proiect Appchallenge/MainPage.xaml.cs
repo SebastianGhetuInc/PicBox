@@ -42,11 +42,11 @@ namespace Proiect_Appchallenge
 
         void makePreview()
         {            
-            aplicaEfect4();
-            aplicaEfect5();
             aplicaEfect1();
             aplicaEfect2();
             aplicaEfect3();
+            aplicaEfect4();
+            aplicaEfect5();
         }
 
 
@@ -291,14 +291,7 @@ namespace Proiect_Appchallenge
                 height = Convert.ToUInt32(originalBitmap.PixelHeight);
 
                // mainContainer.Source = originalBitmap; // show original image in MainPage                
-
-                /*efect1.Source = originalBitmap; // show original image in MainPage
-                efect2.Source = originalBitmap;
-                efect3.Source = originalBitmap;
-                efect4.Source = originalBitmap;
-                efect5.Source = originalBitmap;
-                */
-                // Fetching pixel data
+             // Fetching pixel data
 
                 using (IRandomAccessStream fileStream = await imgFile.OpenAsync(Windows.Storage.FileAccessMode.Read))
                 {
@@ -443,7 +436,7 @@ namespace Proiect_Appchallenge
             mainContainer.Source = currentBitmap;
         }
 
-        private void efect3_PointerPressed_1(object sender, PointerRoutedEventArgs e)
+        private void efect3_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
             currentBitmap = currentBitmapE3;
             mainContainer.Source = currentBitmap;
@@ -455,11 +448,11 @@ namespace Proiect_Appchallenge
             mainContainer.Source = currentBitmap;
         }
 
-        private async void efect5_PointerPressed(object sender, PointerRoutedEventArgs e)
+        private void efect5_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
             currentBitmap = currentBitmapE5;
-            var v = await ResizeImage(currentBitmapE5, 300, 300);
-            mainContainer.Source = v;
+            //var v = await ResizeImage(currentBitmapE5, 300, 300);
+            mainContainer.Source = currentBitmap;
         }
 
         private async Task<WriteableBitmap> ResizeImage(WriteableBitmap sourceWriteBitmap, uint width, uint height)
@@ -502,5 +495,65 @@ namespace Proiect_Appchallenge
             await bitmap.SetSourceAsync(inMemoryRandomStream2);
             return bitmap;
         }
-    }
+
+        private void efect1_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            r1.Visibility = Visibility.Visible;
+        }
+
+        private void efect1_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            r1.Visibility = Visibility.Collapsed;
+        }
+
+        private void efect2_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            r2.Visibility = Visibility.Visible;
+
+        }
+
+        private void efect3_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            r3.Visibility = Visibility.Visible;
+
+        }
+
+        private void efect4_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            r4.Visibility = Visibility.Visible;
+
+        }
+
+        private void efect5_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            r5.Visibility = Visibility.Visible;
+
+        }
+
+        private void efect2_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            r2.Visibility = Visibility.Collapsed;
+
+        }
+
+        private void efect3_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            r3.Visibility = Visibility.Collapsed;
+
+        }
+
+        private void efect4_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            r4.Visibility = Visibility.Collapsed;
+
+        }
+
+        private void efect5_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            r5.Visibility = Visibility.Collapsed;
+
+        }
+
+      
+}
 }

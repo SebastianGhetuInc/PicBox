@@ -6,33 +6,42 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.TopAppBar>
+        <AppBar>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal"/>
+                <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal"/>
+                <AppBarButton Grid.Column="1" HorizontalAlignment="Left" Label="AppBarButton" Margin="310,35,0,0" VerticalAlignment="Top" Icon="Save"/>
+            </Grid>
+        </AppBar>
+    </Page.TopAppBar>
 
     <Viewbox>
         <Grid Height="768" Width="1366">
-            <Image x:Name="mainContainer" HorizontalAlignment="Left" Height="446.418" Margin="131.117,48,0,0" VerticalAlignment="Top" Width="743" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
-                <Image.RenderTransform>
-                    <CompositeTransform SkewX="-0.161" TranslateX="-0.743"/>
-                </Image.RenderTransform>
-            </Image>
+            <Image x:Name="mainContainer" HorizontalAlignment="Center" Height="553" Margin="0,0,0,0" VerticalAlignment="Top" Width="900"/>
 
-            <Button x:ConnectionId='1' x:Name="loadButton" Content="Load image" HorizontalAlignment="Left" Margin="1031,110,0,0" VerticalAlignment="Top" Height="131" Width="245" FontSize="36"                         />
-            <Button x:ConnectionId='2' Content="Save As&#xA;" HorizontalAlignment="Left" Margin="1109,323,0,0" VerticalAlignment="Top" Height="63" Width="138"                     />
-            <TextBox x:Name="Textbox1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Margin="876,89,0,0" Width="339"/>
+            <Button x:ConnectionId='1' x:Name="loadButton" Content="Load image" HorizontalAlignment="Left" Margin="55,261,0,0" VerticalAlignment="Top" Height="65" Width="121" FontSize="36"                         />
+            <Button x:ConnectionId='2' Content="Save" HorizontalAlignment="Left" Margin="1192,271,0,0" VerticalAlignment="Top" Height="55" Width="121"                      FontSize="36"/>
 
-            <ScrollViewer x:Name="scrollPanel" VerticalScrollMode="Disabled" HorizontalAlignment="Left" Height="200" Margin="0,568,0,0" VerticalAlignment="Top" Width="1366" ZoomMode="Disabled" IsTabStop="False" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden" Padding="0,0,0,0">
-                <Grid Height="200" Width="2102">
-                    <Image x:Name="efect1" Height="200" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="200" Margin="0,0,0,0" Stretch="UniformToFill"/>
-                    <Image x:Name="efect2" Height="200" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="200" Margin="300,0,0,0" Stretch="UniformToFill"/>
-                    <Image x:Name="efect3" Height="200" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="200" Margin="600,0,0,0" Stretch="UniformToFill"/>
-                    <Image x:Name="efect4" Height="200" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="200" Margin="900,0,0,0" Stretch="UniformToFill"/>
-                    <Image x:Name="efect5" Height="200" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="200" Margin="1200,0,0,0" Stretch="UniformToFill"/>
+
+            <ScrollViewer x:Name="scrollPanel" VerticalScrollMode="Disabled" HorizontalAlignment="Left" Height="215" Margin="0,568,0,0" VerticalAlignment="Top" Width="1366" ZoomMode="Disabled" IsTabStop="False" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden">
+                <Grid Height="215" Width="2102">
+                    <Rectangle x:Name="r1" Visibility="Collapsed" Fill="#FFF4F4F5" HorizontalAlignment="Left" Width="200" Height="5" VerticalAlignment="Bottom" Margin="0,0,0,210"/>
+                    <Rectangle x:Name="r2" Visibility="Collapsed" Fill="#FFF4F4F5" HorizontalAlignment="Left" Width="200" Height="5" VerticalAlignment="Bottom" Margin="230,0,0,210"/>
+                    <Rectangle x:Name="r3" Visibility="Collapsed" Fill="#FFF4F4F5" HorizontalAlignment="Left" Width="200" Height="5" VerticalAlignment="Bottom" Margin="460,0,0,210"/>
+                    <Rectangle x:Name="r4" Visibility="Collapsed" Fill="#FFF4F4F5" HorizontalAlignment="Left" Width="200" Height="5" VerticalAlignment="Bottom" Margin="690,0,0,210"/>
+                    <Rectangle x:Name="r5" Visibility="Collapsed" Fill="#FFF4F4F5" HorizontalAlignment="Left" Width="200" Height="5" VerticalAlignment="Bottom" Margin="920,0,0,210"/>
+                    <Image x:ConnectionId='3' x:Name="efect1" Height="200" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="200" Margin="0,0,0,0" Stretch="UniformToFill"                                                                                                                   />
+                    <Image x:ConnectionId='4' x:Name="efect2" Height="200" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="200" Margin="230,0,0,0" Stretch="UniformToFill"                                                                                                                   />
+                    <Image x:ConnectionId='5' x:Name="efect3" Height="200" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="200" Margin="460,0,0,0" Stretch="UniformToFill"                                                                                                                   />
+                    <Image x:ConnectionId='6' x:Name="efect4" Height="200" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="200" Margin="690,0,0,0" Stretch="UniformToFill"                                                                                                                   />
+                    <Image x:ConnectionId='7' x:Name="efect5" Height="200" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="200" Margin="920,0,0,0" Stretch="UniformToFill"                                                                                                                   />
                 </Grid>
             </ScrollViewer>
-
-
-
-
-
         </Grid>
     </Viewbox>
 </Page>

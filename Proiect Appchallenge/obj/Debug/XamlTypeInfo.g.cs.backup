@@ -62,7 +62,7 @@ namespace Proiect_Appchallenge.Proiect_Appchallenge_XamlTypeInfo
             if (xamlType != null)
             {
                 _xamlTypeCacheByName.Add(xamlType.FullName, xamlType);
-                _xamlTypeCacheByType.Add(type, xamlType);
+                _xamlTypeCacheByType.Add(xamlType.UnderlyingType, xamlType);
             }
             return xamlType;
         }
@@ -85,7 +85,7 @@ namespace Proiect_Appchallenge.Proiect_Appchallenge_XamlTypeInfo
             }
             if (xamlType != null)
             {
-                _xamlTypeCacheByName.Add(typeName, xamlType);
+                _xamlTypeCacheByName.Add(xamlType.FullName, xamlType);
                 _xamlTypeCacheByType.Add(xamlType.UnderlyingType, xamlType);
             }
             return xamlType;

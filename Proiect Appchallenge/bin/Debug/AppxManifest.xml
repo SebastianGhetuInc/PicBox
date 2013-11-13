@@ -22,7 +22,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="Proiect Appchallenge.exe" EntryPoint="Proiect_Appchallenge.App">
-      <m2:VisualElements DisplayName="Proiect Appchallenge" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="Proiect Appchallenge" ForegroundText="light" BackgroundColor="#464646">
+      <m2:VisualElements DisplayName="PicBox" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="Proiect Appchallenge" ForegroundText="light" BackgroundColor="#464646">
         <m2:SplashScreen Image="Assets\SplashScreen.png" />
       </m2:VisualElements>
     </Application>
