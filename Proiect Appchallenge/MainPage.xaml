@@ -39,7 +39,7 @@
                     <Image x:Name="efect2" Height="200" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="200" Margin="230,0,0,0" Stretch="UniformToFill" PointerPressed="efect2_PointerPressed" PointerEntered="efect2_PointerEntered" PointerExited="efect2_PointerExited"/>
                     <Image x:Name="efect3" Height="200" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="200" Margin="460,0,0,0" Stretch="UniformToFill" PointerPressed="efect3_PointerPressed" PointerEntered="efect3_PointerEntered" PointerExited="efect3_PointerExited"/>
                     <Image x:Name="efect4" Height="200" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="200" Margin="690,0,0,0" Stretch="UniformToFill" PointerPressed="efect4_PointerPressed" PointerEntered="efect4_PointerEntered" PointerExited="efect4_PointerExited"/>
-                    <Image x:Name="efect5" Height="200" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="200" Margin="920,0,0,0" Stretch="UniformToFill" PointerPressed="efect1_PointerPressed" PointerEntered="efect5_PointerEntered" PointerExited="efect5_PointerExited"/>
+                    <Image x:Name="efect5" Height="200" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="200" Margin="920,0,0,0" Stretch="UniformToFill" PointerPressed="efect5_PointerPressed" PointerEntered="efect5_PointerEntered" PointerExited="efect5_PointerExited"/>
                 </Grid>
             </ScrollViewer>
         </Grid>

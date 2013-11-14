@@ -30,23 +30,33 @@ namespace Proiect_Appchallenge
     public sealed partial class MainPage : Page
     {
         byte[] sourcePixels;
+        byte[] thumbnailPixels;
         uint width, height;
+        uint thumbnailWidth, thumbnailHeight;
         WriteableBitmap currentBitmap;
         BitmapImage originalBitmap;
 
-        WriteableBitmap currentBitmapE1;
-        WriteableBitmap currentBitmapE2;
-        WriteableBitmap currentBitmapE3;
-        WriteableBitmap currentBitmapE4;
-        WriteableBitmap currentBitmapE5;
+        WriteableBitmap[] thumbnailEffects = new WriteableBitmap[5];
+        WriteableBitmap[] bigEffects = new WriteableBitmap[5];
+
+        //WriteableBitmap currentBitmapE1;
+        //WriteableBitmap currentBitmapE2;
+        //WriteableBitmap currentBitmapE3;
+        //WriteableBitmap currentBitmapE4;
+        //WriteableBitmap currentBitmapE5;
 
         void makePreview()
-        {            
-            aplicaEfect1();
-            aplicaEfect2();
-            aplicaEfect3();
-            aplicaEfect4();
-            aplicaEfect5();
+        {
+            aplicaEfect1(thumbnailEffects[0], thumbnailPixels, thumbnailWidth, thumbnailHeight, false);
+            aplicaEfect2(thumbnailEffects[1], thumbnailPixels, thumbnailWidth, thumbnailHeight, false);
+            aplicaEfect3(thumbnailEffects[2], thumbnailPixels, thumbnailWidth, thumbnailHeight, false);
+            aplicaEfect4(thumbnailEffects[3], thumbnailPixels, thumbnailWidth, thumbnailHeight, false);
+            aplicaEfect5(thumbnailEffects[4], thumbnailPixels, thumbnailWidth, thumbnailHeight, false);
+            efect1.Source = thumbnailEffects[0];
+            efect2.Source = thumbnailEffects[1];
+            efect3.Source = thumbnailEffects[2];
+            efect4.Source = thumbnailEffects[3];
+            efect5.Source = thumbnailEffects[4];
         }
 
 
@@ -146,115 +156,111 @@ namespace Proiect_Appchallenge
             return newImg;
         }
 
-        private async void aplicaEfect2()
+        private async void aplicaEfect1(WriteableBitmap sourceBitmap, byte[] sourcePixels, uint width, uint height, bool flag)
         {
-            byte[] grayscaled = new byte[sourcePixels.Length];
-
+            byte[] newPixels = new byte[sourcePixels.Length];
             try
             {
-                grayscaled = raiseContrast(sourcePixels, 10);
-                grayscaled = tint(grayscaled, 50, 5, 10);
-                currentBitmapE2 = new WriteableBitmap((int)width, (int)height);
+                newPixels = raiseContrast(sourcePixels, 5);
+                newPixels = tint(newPixels, 25, 25, 0);
+                sourceBitmap = new WriteableBitmap((int)width, (int)height);
 
-                //grayscaled = sourcePixels;
-
-                using (Stream stream = currentBitmapE2.PixelBuffer.AsStream())
+                using (Stream stream = sourceBitmap.PixelBuffer.AsStream())
                 {
-                    await stream.WriteAsync(grayscaled, 0, grayscaled.Length);
-                    efect2.Source = currentBitmapE2;
+                    await stream.WriteAsync(newPixels, 0, newPixels.Length);                    
                 }
+                if (flag)
+                    bigEffects[0] = sourceBitmap;
+                else thumbnailEffects[0] = sourceBitmap;
+
             }
             catch
             {
             }
         }
 
-        private async void aplicaEfect3()
+        private async void aplicaEfect2(WriteableBitmap sourceBitmap, byte[] sourcePixels, uint width, uint height, bool flag)
         {
-            byte[] grayscaled = new byte[sourcePixels.Length];
-
+            byte[] newPixels = new byte[sourcePixels.Length];
             try
             {
-                grayscaled = raiseContrast(sourcePixels, 10);
-                grayscaled = tint(grayscaled, 10, 0, 0);
-                currentBitmapE3 = new WriteableBitmap((int)width, (int)height);
+                newPixels = raiseContrast(sourcePixels, 10);
+                newPixels = tint(newPixels, 50, 5, 10);
+                sourceBitmap = new WriteableBitmap((int)width, (int)height);
 
-                //grayscaled = sourcePixels;
-
-                using (Stream stream = currentBitmapE3.PixelBuffer.AsStream())
+                using (Stream stream = sourceBitmap.PixelBuffer.AsStream())
                 {
-                    await stream.WriteAsync(grayscaled, 0, grayscaled.Length);
-                    efect3.Source = currentBitmapE3;
+                    await stream.WriteAsync(newPixels, 0, newPixels.Length);                    
                 }
-            }
-            catch
-            {
-            } 
-        }
-
-        private async void aplicaEfect1()
-        {
-            byte[] grayscaled = new byte[sourcePixels.Length];
-
-            try
-            {
-                grayscaled = raiseContrast(sourcePixels, 5);
-                grayscaled = tint(grayscaled, 25, 25, 0);
-                currentBitmapE1 = new WriteableBitmap((int)width, (int)height);
-
-                //grayscaled = sourcePixels;
-
-                using (Stream stream = currentBitmapE1.PixelBuffer.AsStream())
-                {
-                    await stream.WriteAsync(grayscaled, 0, grayscaled.Length);
-                    efect1.Source = currentBitmapE1;
-                }
-            }
-            catch
-            {
-            } 
-        }
-
-        private async void aplicaEfect4()
-        {
-            byte[] grayscaled = new byte[sourcePixels.Length];
-
-            try
-            {
-                grayscaled = raiseContrast(sourcePixels, 0);
-                grayscaled = tint(grayscaled, 40, 20, 15);
-                currentBitmapE4 = new WriteableBitmap((int)width, (int)height);
-
-                //grayscaled = sourcePixels;
-
-                using (Stream stream = currentBitmapE4.PixelBuffer.AsStream())
-                {
-                    await stream.WriteAsync(grayscaled, 0, grayscaled.Length);
-                    efect4.Source = currentBitmapE4;
-                }
+                if (flag)
+                    bigEffects[1] = sourceBitmap;
+                else thumbnailEffects[1] = sourceBitmap;
             }
             catch
             {
             }
         }
 
-        private async void aplicaEfect5()
+        private async void aplicaEfect3(WriteableBitmap sourceBitmap, byte[] sourcePixels, uint width, uint height, bool flag)
         {
-            byte[] grayscaled = new byte[sourcePixels.Length];
-
+            byte[] newPixels = new byte[sourcePixels.Length];
             try
             {
-                grayscaled = raiseContrast(sourcePixels, 5);
-                grayscaled = tint(grayscaled, 0, 0, 20);
-                currentBitmapE5 = new WriteableBitmap((int)width, (int)height);
+                newPixels = raiseContrast(sourcePixels, 10);
+                newPixels = tint(newPixels, 10, 0, 0);
+                sourceBitmap = new WriteableBitmap((int)width, (int)height);
 
-                //grayscaled = sourcePixels;
-
-                using (Stream stream = currentBitmapE5.PixelBuffer.AsStream())
+                using (Stream stream = sourceBitmap.PixelBuffer.AsStream())
                 {
-                    await stream.WriteAsync(grayscaled, 0, grayscaled.Length);
-                    efect5.Source = currentBitmapE5;
+                    await stream.WriteAsync(newPixels, 0, newPixels.Length);                    
                 }
+                if (flag)
+                    bigEffects[2] = sourceBitmap;
+                else thumbnailEffects[2] = sourceBitmap;
+            }
+            catch
+            {
+            }
+        }
+
+        private async void aplicaEfect4(WriteableBitmap sourceBitmap, byte[] sourcePixels, uint width, uint height, bool flag)
+        {
+            byte[] newPixels = new byte[sourcePixels.Length];
+            try
+            {
+                newPixels = raiseContrast(sourcePixels, 0);
+                newPixels = tint(newPixels, 40, 20, 15);
+                sourceBitmap = new WriteableBitmap((int)width, (int)height);
+
+                using (Stream stream = sourceBitmap.PixelBuffer.AsStream())
+                {
+                    await stream.WriteAsync(newPixels, 0, newPixels.Length);                    
+                }
+                if (flag)
+                    bigEffects[3] = sourceBitmap;
+                else thumbnailEffects[3] = sourceBitmap;
+            }
+            catch
+            {
+            }
+        }
+
+        private async void aplicaEfect5(WriteableBitmap sourceBitmap, byte[] sourcePixels, uint width, uint height, bool flag)
+        {
+            byte[] newPixels = new byte[sourcePixels.Length];
+            try
+            {
+                newPixels = raiseContrast(sourcePixels, 5);
+                newPixels = tint(newPixels, 0, 0, 20);
+                sourceBitmap = new WriteableBitmap((int)width, (int)height);
+
+                using (Stream stream = sourceBitmap.PixelBuffer.AsStream())
+                {
+                    await stream.WriteAsync(newPixels, 0, newPixels.Length);                    
+                }
+                if (flag)
+                    bigEffects[4] = sourceBitmap;
+                else thumbnailEffects[4] = sourceBitmap;
             }
             catch
             {
@@ -283,10 +289,14 @@ namespace Proiect_Appchallenge
             try
             {
                 IRandomAccessStreamWithContentType img = await imgFile.OpenReadAsync();
-
+                
+                for (int i = 0; i < bigEffects.Length; i++)
+                    bigEffects[i] = null;
+                
                 originalBitmap = new BitmapImage();
 
                 originalBitmap.SetSource(img);
+                img.Dispose();
                 width = Convert.ToUInt32(originalBitmap.PixelWidth);
                 height = Convert.ToUInt32(originalBitmap.PixelHeight);
 
@@ -365,8 +375,27 @@ namespace Proiect_Appchallenge
                     // finally the resized writablebitmap
                     currentBitmap = new WriteableBitmap((int)width, (int)height);
                     await currentBitmap.SetSourceAsync(inMemoryRandomStream);
+                    inMemoryRandomStream.Dispose();
                     mainContainer.Source = currentBitmap;
 
+                    double ratio = (double)width / height;
+                    if(width > height)//landscape
+                    {
+                        thumbnailWidth = (uint)efect1.ActualWidth;
+                        thumbnailHeight = (uint)(efect1.ActualWidth / ratio);
+                    }
+                    else//portrait
+                    {
+                        thumbnailHeight = (uint)efect1.ActualHeight;
+                        thumbnailWidth = (uint)(efect1.ActualHeight * ratio);
+                    }
+                    thumbnailHeight *= 2;
+                    thumbnailWidth *= 2;
+
+                    WriteableBitmap smallImage = await ResizeImage(currentBitmap, thumbnailWidth, thumbnailHeight);
+                    Stream stream = smallImage.PixelBuffer.AsStream();
+                    thumbnailPixels = new byte[(uint)stream.Length];
+                    await stream.ReadAsync(thumbnailPixels, 0, thumbnailPixels.Length);
                     makePreview();
                 }
             }
@@ -426,33 +455,47 @@ namespace Proiect_Appchallenge
 
         private void efect1_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
-            currentBitmap = currentBitmapE1;
-            mainContainer.Source = currentBitmap;
+            if (bigEffects[0] == null)
+            {
+                aplicaEfect1(bigEffects[0], sourcePixels, width, height, true);
+            }         
+            mainContainer.Source = bigEffects[0];
         }
 
         private void efect2_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
-            currentBitmap = currentBitmapE2;
-            mainContainer.Source = currentBitmap;
+            if (bigEffects[1] == null)
+            {
+                aplicaEfect2(bigEffects[1], sourcePixels, width, height, true);
+            }
+            mainContainer.Source = bigEffects[1];
         }
 
         private void efect3_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
-            currentBitmap = currentBitmapE3;
-            mainContainer.Source = currentBitmap;
+            if (bigEffects[2] == null)
+            {
+                aplicaEfect3(bigEffects[2], sourcePixels, width, height, true);
+            }
+            mainContainer.Source = bigEffects[2];
         }
 
         private void efect4_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
-            currentBitmap = currentBitmapE4;
-            mainContainer.Source = currentBitmap;
+            if (bigEffects[3] == null)
+            {
+                aplicaEfect4(bigEffects[3], sourcePixels, width, height, true);
+            }
+            mainContainer.Source = bigEffects[3];
         }
 
         private void efect5_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
-            currentBitmap = currentBitmapE5;
-            //var v = await ResizeImage(currentBitmapE5, 300, 300);
-            mainContainer.Source = currentBitmap;
+            if (bigEffects[4] == null)
+            {
+                aplicaEfect5(bigEffects[4], sourcePixels, width, height, true);
+            }
+            mainContainer.Source = bigEffects[4];
         }
 
         private async Task<WriteableBitmap> ResizeImage(WriteableBitmap sourceWriteBitmap, uint width, uint height)
@@ -471,7 +514,8 @@ namespace Proiect_Appchallenge
             var transform = new BitmapTransform
             {
                 ScaledWidth = width,
-                ScaledHeight = height
+                ScaledHeight = height,
+                InterpolationMode = BitmapInterpolationMode.Cubic
             };
             //inMemoryRandomStream.Seek(0);
             var decoder = await BitmapDecoder.CreateAsync(inMemoryRandomStream);
