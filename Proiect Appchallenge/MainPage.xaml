@@ -22,9 +22,13 @@
 
     <Viewbox>
         <Grid Height="768" Width="1366">
-            <Image x:Name="mainContainer" HorizontalAlignment="Center" Height="553" Margin="0,0,0,0" VerticalAlignment="Top" Width="900"/>
+            <Grid x:Name="mainContainerGrid" Height="553" Width="900" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Image x:Name="mainContainer" HorizontalAlignment="Center" Height="553" Margin="0,0,0,0" VerticalAlignment="Top" Width="900" PointerPressed="mainContainer_PointerPressed"/>
+                <Rectangle x:Name="selectionBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Height="116" Width="139" Stroke="#FFF7F7F7"></Rectangle>
+            </Grid>
 
-            <Button x:Name="loadButton" Content="Load image" HorizontalAlignment="Left" Margin="55,261,0,0" VerticalAlignment="Top" Height="65" Width="121" FontSize="36" Click="loadButton_Click"/>
+
+            <Button x:Name="loadButton" Content="Load image" HorizontalAlignment="Left" Margin="55,139,0,0" VerticalAlignment="Top" Height="65" Width="121" FontSize="36" Click="loadButton_Click"/>
             <Button Content="Save" HorizontalAlignment="Left" Margin="1192,271,0,0" VerticalAlignment="Top" Height="55" Width="121" Click="Button_Click" FontSize="36"/>
 
 
@@ -42,6 +46,11 @@
                     <Image x:Name="efect5" Height="200" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="200" Margin="920,0,0,0" Stretch="UniformToFill" PointerPressed="efect1_PointerPressed" PointerEntered="efect5_PointerEntered" PointerExited="efect5_PointerExited"/>
                 </Grid>
             </ScrollViewer>
+            <Button Content="Button" HorizontalAlignment="Left" Margin="55,225,0,0" VerticalAlignment="Top" Height="57" Width="121" Click="Button_Click_1"/>
+            <TextBox x:Name="resBox" HorizontalAlignment="Left" Margin="58,309,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Height="28" Width="115"/>
+            <TextBox x:Name="heightBox" HorizontalAlignment="Left" Margin="58,370,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Height="28" Width="115"/>
+            <TextBox x:Name="widthBox" HorizontalAlignment="Left" Margin="58,426,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Height="28" Width="115"/>
+            <TextBox x:Name="dimBox" HorizontalAlignment="Left" Margin="58,484,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Height="35" Width="115"/>
         </Grid>
     </Viewbox>
 </Page>

@@ -23,7 +23,7 @@
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\bin\Debug\Proiect Appchallenge.exe">
       <PackagePath>Proiect Appchallenge.exe</PackagePath>
-      <Modified>2013-11-13T14:06:36.258</Modified>
+      <Modified>2013-11-14T16:53:05.589</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\Assets\Logo.scale-100.png">
       <PackagePath>Assets\Logo.scale-100.png</PackagePath>
@@ -51,7 +51,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\bin\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2013-11-13T14:06:35.942</Modified>
+      <Modified>2013-11-14T15:33:32.740</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
