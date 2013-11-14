@@ -123,3 +123,35 @@ C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\obj\Debug\qualifiers.txt
 C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\obj\Debug\qualifiers.txt.intermediate
 C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\obj\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\obj\Debug\ProjectArchitectures.txt
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\obj\Debug\App.g.i.cs
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\obj\Debug\App.g.cs
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\obj\Debug\MainPage.g.i.cs
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\obj\Debug\MainPage.g.cs
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\obj\Debug\XamlTypeInfo.g.cs
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\obj\Debug\App.xaml
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\obj\Debug\MainPage.xaml
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\obj\Debug\App.xbf
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\obj\Debug\MainPage.xbf
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\obj\Debug\XamlSaveStateFile.xml
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\obj\Debug\Proiect Appchallenge.exe
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\obj\Debug\Proiect Appchallenge.pdb
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\bin\Debug\App.xbf
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\bin\Debug\MainPage.xbf
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\bin\Debug\Proiect Appchallenge.exe
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\bin\Debug\Proiect Appchallenge.pdb
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\bin\Debug\resources.pri
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\bin\Debug\AppxManifest.xml
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\bin\Debug\Proiect Appchallenge.build.appxrecipe
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\obj\Debug\priconfig.xml
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\obj\Debug\priconfig.xml.intermediate
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\obj\Debug\layout.resfiles
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\obj\Debug\layout.resfiles.intermediate
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\obj\Debug\resources.resfiles
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\obj\Debug\resources.resfiles.intermediate
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\obj\Debug\pri.resfiles
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\obj\Debug\pri.resfiles.intermediate
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\obj\Debug\qualifiers.txt
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\obj\Debug\qualifiers.txt.intermediate
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\obj\Debug\MultipleQualifiersPerDimensionFound.txt
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\obj\Debug\resources.pri.xml
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\obj\Debug\ProjectArchitectures.txt
