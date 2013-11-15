@@ -1,1 +1,1 @@
-C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\Proiect Appchallenge.csproj;neutral
+F:\Projects\GitHub\PicBox\Proiect Appchallenge\Proiect Appchallenge.csproj;neutral
