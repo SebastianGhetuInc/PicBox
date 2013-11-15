@@ -11,6 +11,7 @@ using Windows.Graphics.Imaging;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.Storage.Streams;
+using Windows.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -35,6 +36,8 @@ namespace Proiect_Appchallenge
         uint thumbnailWidth, thumbnailHeight;
         WriteableBitmap currentBitmap;
         BitmapImage originalBitmap;
+
+        string openedFileType;
 
         WriteableBitmap[] thumbnailEffects = new WriteableBitmap[5];
         WriteableBitmap[] bigEffects = new WriteableBitmap[5];
@@ -288,8 +291,11 @@ namespace Proiect_Appchallenge
 
             try
             {
-                IRandomAccessStreamWithContentType img = await imgFile.OpenReadAsync();
                 
+                IRandomAccessStreamWithContentType img = await imgFile.OpenReadAsync();
+                openedFileType = imgFile.FileType;
+
+
                 for (int i = 0; i < bigEffects.Length; i++)
                     bigEffects[i] = null;
                 
@@ -348,7 +354,7 @@ namespace Proiect_Appchallenge
                     // Encoding data
                     var inMemoryRandomStream = new InMemoryRandomAccessStream();
                     BitmapEncoder encoder;
-                    switch (imgFile.FileType)
+                    switch (imgFile.FileType.ToLower())
                     {
                         case ".jpg":
                             encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, inMemoryRandomStream);
@@ -378,6 +384,13 @@ namespace Proiect_Appchallenge
                     inMemoryRandomStream.Dispose();
                     mainContainer.Source = currentBitmap;
 
+
+                    resBox.Text = currentBitmap.PixelHeight + " " + currentBitmap.PixelWidth;
+                    heightBox.Text = mainContainer.ActualHeight.ToString();
+                    widthBox.Text = mainContainer.ActualWidth.ToString();
+                    //mainContainerGrid.Height = mainContainer.ActualHeight;
+                    dimBox.Text = mainContainerGrid.Width.ToString() + " " + mainContainer.ActualWidth.ToString();
+
                     double ratio = (double)width / height;
                     if(width > height)//landscape
                     {
@@ -396,6 +409,9 @@ namespace Proiect_Appchallenge
                     Stream stream = smallImage.PixelBuffer.AsStream();
                     thumbnailPixels = new byte[(uint)stream.Length];
                     await stream.ReadAsync(thumbnailPixels, 0, thumbnailPixels.Length);
+
+
+
                     makePreview();
                 }
             }
@@ -419,7 +435,7 @@ namespace Proiect_Appchallenge
                 using (IRandomAccessStream stream = await file.OpenAsync(FileAccessMode.ReadWrite))
                 {
                     BitmapEncoder encoder;
-                    switch (file.FileType)
+                    switch (file.FileType.ToLower())
                     {
                         case ".jpg":
                             encoder  = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, stream);
@@ -459,7 +475,8 @@ namespace Proiect_Appchallenge
             {
                 aplicaEfect1(bigEffects[0], sourcePixels, width, height, true);
             }         
-            mainContainer.Source = bigEffects[0];
+            //mainContainer.Source = bigEffects[0];
+            currentBitmap = bigEffects[0];
         }
 
         private void efect2_PointerPressed(object sender, PointerRoutedEventArgs e)
@@ -540,6 +557,136 @@ namespace Proiect_Appchallenge
             return bitmap;
         }
 
+        private async Task<WriteableBitmap> rotateImage(WriteableBitmap sourceWriteBitmap, int rotateParam)
+        {
+            // Get the pixel buffer of the writable bitmap in bytes
+            Stream stream = sourceWriteBitmap.PixelBuffer.AsStream();
+            byte[] pixels = new byte[(uint)stream.Length];
+            await stream.ReadAsync(pixels, 0, pixels.Length);
+
+            //Encoding the data of the PixelBuffer we have from the writable bitmap
+            var inMemoryRandomStream = new InMemoryRandomAccessStream();
+
+            BitmapEncoder encoder;
+            switch (openedFileType.ToLower())
+            {
+                case ".jpg":
+                    encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, inMemoryRandomStream);
+                    break;
+                case ".png":
+                    encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, inMemoryRandomStream);
+                    break;
+                case ".bmp":
+                    encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.BmpEncoderId, inMemoryRandomStream);
+                    break;
+                case ".gif":
+                    encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.GifEncoderId, inMemoryRandomStream);
+                    break;
+                case ".jpeg":
+                    encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, inMemoryRandomStream);
+                    break;
+                default:
+                    encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, inMemoryRandomStream);
+                    break;
+            }
+
+            //var encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, inMemoryRandomStream);
+            encoder.SetPixelData(
+                BitmapPixelFormat.Bgra8,
+                BitmapAlphaMode.Straight,
+                (uint)sourceWriteBitmap.PixelWidth,
+                (uint)sourceWriteBitmap.PixelHeight,
+                96, 96, pixels);
+            await encoder.FlushAsync();
+
+            // At this point we have an encoded image in inMemoryRandomStream
+            // We apply the transform and decode
+
+            BitmapRotation r;
+            switch (rotateParam)
+            {
+                case (1):
+                    r = BitmapRotation.Clockwise180Degrees;
+                    break;
+
+                case (2):
+                    r = BitmapRotation.Clockwise270Degrees;
+                    break;
+
+                case (3):
+                    r = BitmapRotation.Clockwise90Degrees;
+                    break;
+
+                default:
+                    r = BitmapRotation.None;
+                    break;
+
+
+            }
+
+            var transform = new BitmapTransform
+            {
+                Rotation = r
+            };
+
+            //inMemoryRandomStream.Seek(0);
+
+            var decoder = await BitmapDecoder.CreateAsync(inMemoryRandomStream);
+            var pixelData = await decoder.GetPixelDataAsync(
+                            BitmapPixelFormat.Bgra8,
+                            BitmapAlphaMode.Straight,
+                            transform,
+                            ExifOrientationMode.IgnoreExifOrientation,
+                            ColorManagementMode.DoNotColorManage);
+
+            // An array containing the decoded image data
+            var sourceDecodedPixels = pixelData.DetachPixelData();
+
+            // Approach 1 : Encoding the image buffer again:
+            // Encoding data
+            var inMemoryRandomStream2 = new InMemoryRandomAccessStream();
+
+            BitmapEncoder encoder2;
+            switch (openedFileType.ToLower())
+            {
+                case ".jpg":
+                    encoder2 = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, inMemoryRandomStream2);
+                    break;
+                case ".png":
+                    encoder2 = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, inMemoryRandomStream2);
+                    break;
+                case ".bmp":
+                    encoder2 = await BitmapEncoder.CreateAsync(BitmapEncoder.BmpEncoderId, inMemoryRandomStream2);
+                    break;
+                case ".gif":
+                    encoder2 = await BitmapEncoder.CreateAsync(BitmapEncoder.GifEncoderId, inMemoryRandomStream2);
+                    break;
+                case ".jpeg":
+                    encoder2 = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, inMemoryRandomStream2);
+                    break;
+                default:
+                    encoder2 = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, inMemoryRandomStream2);
+                    break;
+            }
+
+            encoder2.SetPixelData(
+                BitmapPixelFormat.Bgra8,
+                BitmapAlphaMode.Ignore,
+                width, height, 96, 96,
+                sourceDecodedPixels
+                );
+
+            await encoder2.FlushAsync();
+            inMemoryRandomStream2.Seek(0);
+            // finally the resized writablebitmap
+            var bitmap = new WriteableBitmap((int)width, (int)height);
+            await bitmap.SetSourceAsync(inMemoryRandomStream2);
+
+            mainContainer.Source = bitmap;
+            return bitmap;
+        }
+
+
         private void efect1_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
             r1.Visibility = Visibility.Visible;
@@ -596,6 +743,89 @@ namespace Proiect_Appchallenge
         {
             r5.Visibility = Visibility.Collapsed;
 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            rotateImage(currentBitmap, 1);
+        }
+
+        bool pressedOnce = false;
+        bool pressedTwice = false;
+        bool pressedThrice = false;
+
+        Point firstPoint;
+        Point secondPoint;
+
+        private void mainContainer_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            if (!pressedOnce)
+            {
+                pressedOnce = true;
+                PointerPoint pt = e.GetCurrentPoint(mainContainer);
+                firstPoint = pt.Position;
+                resBox.Text = firstPoint.Y + " " + firstPoint.X;
+            }
+            else if (!pressedTwice)
+            {
+                pressedTwice = true;
+                Point p = new Point();
+                PointerPoint pt = e.GetCurrentPoint(mainContainer);
+                secondPoint = pt.Position;
+
+                try
+                {
+                    selectionBox.Height = Math.Abs(firstPoint.Y - secondPoint.Y);
+                    selectionBox.Width = Math.Abs(firstPoint.X - secondPoint.X);
+                }
+                catch
+                {
+                }
+
+                double smallestX = Math.Min(firstPoint.X, secondPoint.X);
+                double smallestY = Math.Min(firstPoint.Y, secondPoint.Y);
+
+
+                selectionBox.Margin = new Thickness((mainContainerGrid.Width - mainContainer.ActualWidth) / 2 + smallestX,
+                    (mainContainerGrid.Height - mainContainer.ActualHeight) / 2 + smallestY,
+                    0, 0);
+
+                selectionBox.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            }
+            else if (!pressedThrice)
+            {
+                pressedOnce = false;
+                pressedTwice = false;
+                Point p = new Point(0, 0);
+                firstPoint = secondPoint = p;
+                selectionBox.Height = 0;
+                selectionBox.Width = 0;
+                selectionBox.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            }
+        }
+
+        private void mainContainer_PointerMoved(object sender, PointerRoutedEventArgs e)
+        {
+            if (pressedOnce && !pressedTwice)
+            {
+                PointerPoint pt = e.GetCurrentPoint(mainContainer);
+                Point currentPoint = pt.Position;
+
+                double smallestX = Math.Min(firstPoint.X, currentPoint.X);
+                double smallestY = Math.Min(firstPoint.Y, currentPoint.Y);
+
+
+                selectionBox.Height = Math.Abs(firstPoint.Y - currentPoint.Y);
+                selectionBox.Width = Math.Abs(firstPoint.X - currentPoint.X);
+                
+
+                selectionBox.Margin = new Thickness((mainContainerGrid.Width - mainContainer.ActualWidth) / 2 + smallestX,
+                    (mainContainerGrid.Height - mainContainer.ActualHeight) / 2 + smallestY,
+                    0, 0);
+
+                selectionBox.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            
+            }
         }
 
       
