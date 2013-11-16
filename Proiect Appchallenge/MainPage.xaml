@@ -22,9 +22,9 @@
 
     <Viewbox>
         <Grid Height="768" Width="1366">
-            <Grid x:Name="mainContainerGrid" Height="553" Width="900" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <Image x:Name="mainContainer" HorizontalAlignment="Center" Height="553" Margin="0,0,0,0" VerticalAlignment="Top" Width="900" PointerPressed="mainContainer_PointerPressed" PointerMoved="mainContainer_PointerMoved"/>
-                <Rectangle x:Name="selectionBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Height="116" Width="139" Stroke="#FFF7F7F7"></Rectangle>
+            <Grid x:Name="mainContainerGrid" Height="519" Width="900" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="233,0">
+                <Image x:Name="mainContainer" HorizontalAlignment="Center" Width="900" PointerPressed="mainContainer_PointerPressed" PointerMoved="mainContainer_PointerMoved"/>
+                <Rectangle x:Name="selectionBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Height="116" Width="139" Stroke="#FFF7F7F7" PointerPressed="selectionBox_PointerPressed" Visibility="Collapsed"></Rectangle>
             </Grid>
 
 

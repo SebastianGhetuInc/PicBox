@@ -42,12 +42,6 @@ namespace Proiect_Appchallenge
         WriteableBitmap[] thumbnailEffects = new WriteableBitmap[5];
         WriteableBitmap[] bigEffects = new WriteableBitmap[5];
 
-        //WriteableBitmap currentBitmapE1;
-        //WriteableBitmap currentBitmapE2;
-        //WriteableBitmap currentBitmapE3;
-        //WriteableBitmap currentBitmapE4;
-        //WriteableBitmap currentBitmapE5;
-
         void makePreview()
         {
             aplicaEfect1(thumbnailEffects[0], thumbnailPixels, thumbnailWidth, thumbnailHeight, false);
@@ -78,32 +72,26 @@ namespace Proiect_Appchallenge
                 blue = ((((v[k] / 255.0) - 0.5) *
                             contrastLevel) + 0.5) * 255.0;
 
-
                 green = ((((v[k + 1] / 255.0) - 0.5) *
                             contrastLevel) + 0.5) * 255.0;
 
-
                 red = ((((v[k + 2] / 255.0) - 0.5) *
                             contrastLevel) + 0.5) * 255.0;
-
 
                 if (blue > 255)
                 { blue = 255; }
                 else if (blue < 0)
                 { blue = 0; }
 
-
                 if (green > 255)
                 { green = 255; }
                 else if (green < 0)
                 { green = 0; }
 
-
                 if (red > 255)
                 { red = 255; }
                 else if (red < 0)
                 { red = 0; }
-
 
                 newImg[k] = (byte)blue;
                 newImg[k + 1] = (byte)green;
@@ -129,31 +117,25 @@ namespace Proiect_Appchallenge
             byte[] newImg = new byte[v.Length];
 
             for (int k = 0; k + 4 < v.Length; k += 4)
-            {
-                
+            {              
                 
                 blue = v[k] + (255 - v[k]) * blueTint;
                 green = v[k + 1] + (255 - v[k + 1]) * greenTint;
                 red = v[k + 2] + (255 - v[k + 2]) * redTint;
 
-
                 if (blue > 255)
                 { blue = 255; }
-
 
                 if (green > 255)
                 { green = 255; }
 
-
                 if (red > 255)
                 { red = 255; }
-
 
                 newImg[k] = (byte)blue;
                 newImg[k + 1] = (byte)green;
                 newImg[k + 2] = (byte)red;
                 newImg[k + 3] = v[k + 3];
-
             }
 
             return newImg;
@@ -354,27 +336,8 @@ namespace Proiect_Appchallenge
                     // Encoding data
                     var inMemoryRandomStream = new InMemoryRandomAccessStream();
                     BitmapEncoder encoder;
-                    switch (imgFile.FileType.ToLower())
-                    {
-                        case ".jpg":
-                            encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, inMemoryRandomStream);
-                            break;
-                        case ".png":
-                            encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, inMemoryRandomStream);
-                            break;
-                        case ".bmp":
-                            encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.BmpEncoderId, inMemoryRandomStream);
-                            break;
-                        case ".gif":
-                            encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.GifEncoderId, inMemoryRandomStream);
-                            break;
-                        case ".jpeg":
-                            encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, inMemoryRandomStream);
-                            break;
-                        default:
-                            encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, inMemoryRandomStream);
-                            break;
-                    }                    
+                    encoder = await BitmapEncoder.CreateAsync(getEncoderId(openedFileType), inMemoryRandomStream);
+                                     
                     encoder.SetPixelData(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Straight, width, height, 96, 96, sourcePixels);
                     await encoder.FlushAsync();
                     inMemoryRandomStream.Seek(0);
@@ -410,8 +373,6 @@ namespace Proiect_Appchallenge
                     thumbnailPixels = new byte[(uint)stream.Length];
                     await stream.ReadAsync(thumbnailPixels, 0, thumbnailPixels.Length);
 
-
-
                     makePreview();
                 }
             }
@@ -435,27 +396,7 @@ namespace Proiect_Appchallenge
                 using (IRandomAccessStream stream = await file.OpenAsync(FileAccessMode.ReadWrite))
                 {
                     BitmapEncoder encoder;
-                    switch (file.FileType.ToLower())
-                    {
-                        case ".jpg":
-                            encoder  = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, stream);
-                            break;
-                        case ".png":
-                             encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, stream);
-                            break;
-                        case ".bmp" :
-                             encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.BmpEncoderId, stream);
-                            break;
-                        case ".gif" :
-                            encoder  = await BitmapEncoder.CreateAsync(BitmapEncoder.GifEncoderId, stream);
-                            break;
-                        case ".jpeg" :
-                             encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, stream);
-                            break; 
-                        default :
-                             encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, stream);
-                            break;
-                    }
+                    encoder = await BitmapEncoder.CreateAsync(getEncoderId(file.FileType), stream);                   
                     
                     using (Stream pixelStream = currentBitmap.PixelBuffer.AsStream())
                     {
@@ -474,9 +415,9 @@ namespace Proiect_Appchallenge
             if (bigEffects[0] == null)
             {
                 aplicaEfect1(bigEffects[0], sourcePixels, width, height, true);
-            }         
-            //mainContainer.Source = bigEffects[0];
-            currentBitmap = bigEffects[0];
+            }     
+            currentBitmap = bigEffects[0]; 
+            mainContainer.Source = currentBitmap;
         }
 
         private void efect2_PointerPressed(object sender, PointerRoutedEventArgs e)
@@ -485,7 +426,8 @@ namespace Proiect_Appchallenge
             {
                 aplicaEfect2(bigEffects[1], sourcePixels, width, height, true);
             }
-            mainContainer.Source = bigEffects[1];
+            currentBitmap = bigEffects[1];
+            mainContainer.Source = currentBitmap;
         }
 
         private void efect3_PointerPressed(object sender, PointerRoutedEventArgs e)
@@ -494,7 +436,8 @@ namespace Proiect_Appchallenge
             {
                 aplicaEfect3(bigEffects[2], sourcePixels, width, height, true);
             }
-            mainContainer.Source = bigEffects[2];
+            currentBitmap = bigEffects[2];
+            mainContainer.Source = currentBitmap;
         }
 
         private void efect4_PointerPressed(object sender, PointerRoutedEventArgs e)
@@ -503,7 +446,8 @@ namespace Proiect_Appchallenge
             {
                 aplicaEfect4(bigEffects[3], sourcePixels, width, height, true);
             }
-            mainContainer.Source = bigEffects[3];
+            currentBitmap = bigEffects[3];
+            mainContainer.Source = currentBitmap;
         }
 
         private void efect5_PointerPressed(object sender, PointerRoutedEventArgs e)
@@ -512,7 +456,8 @@ namespace Proiect_Appchallenge
             {
                 aplicaEfect5(bigEffects[4], sourcePixels, width, height, true);
             }
-            mainContainer.Source = bigEffects[4];
+            currentBitmap = bigEffects[4];
+            mainContainer.Source = currentBitmap;
         }
 
         private async Task<WriteableBitmap> ResizeImage(WriteableBitmap sourceWriteBitmap, uint width, uint height)
@@ -523,7 +468,7 @@ namespace Proiect_Appchallenge
             await stream.ReadAsync(pixels, 0, pixels.Length);
             //Encoding the data of the PixelBuffer we have from the writable bitmap
             var inMemoryRandomStream = new InMemoryRandomAccessStream();
-            var encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, inMemoryRandomStream);
+            var encoder = await BitmapEncoder.CreateAsync(getEncoderId(openedFileType), inMemoryRandomStream);
             encoder.SetPixelData(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Ignore, (uint)sourceWriteBitmap.PixelWidth, (uint)sourceWriteBitmap.PixelHeight, 96, 96, pixels);
             await encoder.FlushAsync();
             // At this point we have an encoded image in inMemoryRandomStream
@@ -534,7 +479,7 @@ namespace Proiect_Appchallenge
                 ScaledHeight = height,
                 InterpolationMode = BitmapInterpolationMode.Cubic
             };
-            //inMemoryRandomStream.Seek(0);
+            inMemoryRandomStream.Seek(0);
             var decoder = await BitmapDecoder.CreateAsync(inMemoryRandomStream);
             var pixelData = await decoder.GetPixelDataAsync(
                             BitmapPixelFormat.Bgra8,
@@ -542,12 +487,10 @@ namespace Proiect_Appchallenge
                             transform,
                             ExifOrientationMode.IgnoreExifOrientation,
                             ColorManagementMode.DoNotColorManage);
-            // An array containing the decoded image data
             var sourceDecodedPixels = pixelData.DetachPixelData();
-            // Approach 1 : Encoding the image buffer again:
-            // Encoding data
+
             var inMemoryRandomStream2 = new InMemoryRandomAccessStream();
-            var encoder2 = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, inMemoryRandomStream2);
+            var encoder2 = await BitmapEncoder.CreateAsync(getEncoderId(openedFileType), inMemoryRandomStream2);
             encoder2.SetPixelData(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Ignore, width, height, 96, 96, sourceDecodedPixels);
             await encoder2.FlushAsync();
             inMemoryRandomStream2.Seek(0);
@@ -568,29 +511,8 @@ namespace Proiect_Appchallenge
             var inMemoryRandomStream = new InMemoryRandomAccessStream();
 
             BitmapEncoder encoder;
-            switch (openedFileType.ToLower())
-            {
-                case ".jpg":
-                    encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, inMemoryRandomStream);
-                    break;
-                case ".png":
-                    encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, inMemoryRandomStream);
-                    break;
-                case ".bmp":
-                    encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.BmpEncoderId, inMemoryRandomStream);
-                    break;
-                case ".gif":
-                    encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.GifEncoderId, inMemoryRandomStream);
-                    break;
-                case ".jpeg":
-                    encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, inMemoryRandomStream);
-                    break;
-                default:
-                    encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, inMemoryRandomStream);
-                    break;
-            }
+            encoder = await BitmapEncoder.CreateAsync(getEncoderId(openedFileType), inMemoryRandomStream);         
 
-            //var encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, inMemoryRandomStream);
             encoder.SetPixelData(
                 BitmapPixelFormat.Bgra8,
                 BitmapAlphaMode.Straight,
@@ -620,8 +542,6 @@ namespace Proiect_Appchallenge
                 default:
                     r = BitmapRotation.None;
                     break;
-
-
             }
 
             var transform = new BitmapTransform
@@ -629,8 +549,7 @@ namespace Proiect_Appchallenge
                 Rotation = r
             };
 
-            //inMemoryRandomStream.Seek(0);
-
+            inMemoryRandomStream.Seek(0);
             var decoder = await BitmapDecoder.CreateAsync(inMemoryRandomStream);
             var pixelData = await decoder.GetPixelDataAsync(
                             BitmapPixelFormat.Bgra8,
@@ -639,35 +558,12 @@ namespace Proiect_Appchallenge
                             ExifOrientationMode.IgnoreExifOrientation,
                             ColorManagementMode.DoNotColorManage);
 
-            // An array containing the decoded image data
             var sourceDecodedPixels = pixelData.DetachPixelData();
 
-            // Approach 1 : Encoding the image buffer again:
-            // Encoding data
-            var inMemoryRandomStream2 = new InMemoryRandomAccessStream();
+             var inMemoryRandomStream2 = new InMemoryRandomAccessStream();
 
             BitmapEncoder encoder2;
-            switch (openedFileType.ToLower())
-            {
-                case ".jpg":
-                    encoder2 = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, inMemoryRandomStream2);
-                    break;
-                case ".png":
-                    encoder2 = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, inMemoryRandomStream2);
-                    break;
-                case ".bmp":
-                    encoder2 = await BitmapEncoder.CreateAsync(BitmapEncoder.BmpEncoderId, inMemoryRandomStream2);
-                    break;
-                case ".gif":
-                    encoder2 = await BitmapEncoder.CreateAsync(BitmapEncoder.GifEncoderId, inMemoryRandomStream2);
-                    break;
-                case ".jpeg":
-                    encoder2 = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, inMemoryRandomStream2);
-                    break;
-                default:
-                    encoder2 = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, inMemoryRandomStream2);
-                    break;
-            }
+            encoder2 = await BitmapEncoder.CreateAsync(getEncoderId(openedFileType), inMemoryRandomStream2);
 
             encoder2.SetPixelData(
                 BitmapPixelFormat.Bgra8,
@@ -745,9 +641,9 @@ namespace Proiect_Appchallenge
 
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            rotateImage(currentBitmap, 1);
+            await rotateImage(currentBitmap, 1);
         }
 
         bool pressedOnce = false;
@@ -794,13 +690,14 @@ namespace Proiect_Appchallenge
             }
             else if (!pressedThrice)
             {
+                loadCropped();
                 pressedOnce = false;
                 pressedTwice = false;
                 Point p = new Point(0, 0);
                 firstPoint = secondPoint = p;
                 selectionBox.Height = 0;
                 selectionBox.Width = 0;
-                selectionBox.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+               // selectionBox.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             }
         }
 
@@ -828,6 +725,107 @@ namespace Proiect_Appchallenge
             }
         }
 
-      
-}
+        public async Task<WriteableBitmap> CropBitmap(WriteableBitmap sourceWriteBitmap, Point startPoint, Point endPoint)
+        {               
+            double ratio = currentBitmap.PixelHeight / mainContainer.ActualHeight;
+
+            using (Stream sourceStream = sourceWriteBitmap.PixelBuffer.AsStream())
+            {
+                byte[] pixelss = new byte[(uint)sourceStream.Length];
+                await sourceStream.ReadAsync(pixelss, 0, pixelss.Length);
+                //Encoding the data of the PixelBuffer we have from the writable bitmap
+                using (InMemoryRandomAccessStream inMemoryRandomStream = new InMemoryRandomAccessStream())
+                {
+                    var encoder = await BitmapEncoder.CreateAsync(getEncoderId(openedFileType), inMemoryRandomStream);
+                    encoder.SetPixelData(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Ignore, (uint)sourceWriteBitmap.PixelWidth, (uint)sourceWriteBitmap.PixelHeight, 96, 96, pixelss);
+                    await encoder.FlushAsync();
+                    // At this point we have an encoded image in inMemoryRandomStream
+                    // We apply the transform and decode          
+                    inMemoryRandomStream.Seek(0);
+
+                    uint startX = (uint)(Math.Min(startPoint.X, endPoint.X) * ratio);
+                    uint startY = (uint)(Math.Min(startPoint.Y, endPoint.Y) * ratio);
+                    uint endX = (uint)(Math.Max(startPoint.X, endPoint.X) * ratio);
+                    uint endY = (uint)(Math.Max(startPoint.Y, endPoint.Y) * ratio); 
+
+                    uint width = (uint)Math.Abs((int)startX - (int)endX);
+                    uint height = (uint)Math.Abs((int)startY - (int)endY);
+
+                    // Create a decoder from the stream. With the decoder, we can get  
+                    // the properties of the image. 
+                    BitmapDecoder decoder = await BitmapDecoder.CreateAsync(inMemoryRandomStream);
+
+                    // The scaledSize of original image. 
+                    uint scaledWidth = decoder.PixelWidth;
+                    uint scaledHeight = decoder.PixelHeight;
+
+                    // Create cropping BitmapTransform and define the bounds. 
+                    BitmapTransform transform = new BitmapTransform();
+                    BitmapBounds bounds = new BitmapBounds();
+                    bounds.X = startX;
+                    bounds.Y = startY;
+                    bounds.Height = height;
+                    bounds.Width = width;
+                    transform.Bounds = bounds;
+
+                    // Get the cropped pixels within the bounds of transform. 
+                    PixelDataProvider pix = await decoder.GetPixelDataAsync(
+                        BitmapPixelFormat.Bgra8,
+                        BitmapAlphaMode.Straight,
+                        transform,
+                        ExifOrientationMode.IgnoreExifOrientation,
+                        ColorManagementMode.ColorManageToSRgb);
+                    var sourceDecodedPixels = pix.DetachPixelData();
+
+                    using (InMemoryRandomAccessStream inMemoryRandomStream2 = new InMemoryRandomAccessStream())
+                    {
+                        var encoder2 = await BitmapEncoder.CreateAsync(getEncoderId(openedFileType), inMemoryRandomStream2);
+                        encoder2.SetPixelData(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Ignore, width, height, 96, 96, sourceDecodedPixels);
+                        await encoder2.FlushAsync();
+                        inMemoryRandomStream2.Seek(0);                        
+                        var bitmap = new WriteableBitmap((int)width, (int)height);
+                        await bitmap.SetSourceAsync(inMemoryRandomStream2);
+                        return bitmap;
+                    }
+                }
+            }
+        }
+        private async void loadCropped()
+        {
+            WriteableBitmap temp = await CropBitmap(currentBitmap, firstPoint, secondPoint);
+            mainContainer.Source = temp;
+        }
+
+        private void selectionBox_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {           
+            mainContainer_PointerPressed(sender, e);
+        }
+
+        private Guid getEncoderId(String fileType)
+        {
+            Guid encoderId;
+            switch (fileType.ToLower())
+            {
+                case ".jpg":
+                    encoderId = BitmapEncoder.JpegEncoderId;
+                    break;
+                case ".png":
+                    encoderId = BitmapEncoder.PngEncoderId;
+                    break;
+                case ".bmp":
+                    encoderId = BitmapEncoder.BmpEncoderId;
+                    break;
+                case ".gif":
+                    encoderId = BitmapEncoder.GifEncoderId;
+                    break;
+                case ".jpeg":
+                    encoderId = BitmapEncoder.JpegEncoderId;
+                    break;
+                default:
+                    encoderId = BitmapEncoder.JpegEncoderId;
+                    break;
+            }
+            return encoderId;
+        }
+    }
 }

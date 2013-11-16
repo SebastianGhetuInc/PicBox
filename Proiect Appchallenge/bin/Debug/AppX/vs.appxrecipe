@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>SEBASTIAN</Machine>
-    <WindowsUser>Sebastian</WindowsUser>
+    <Machine>ROBERT-PC</Machine>
+    <WindowsUser>Robert</WindowsUser>
     <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
     <PackageArchitecture>neutral</PackageArchitecture>
     <PackageIdentityName>0b452331-ca64-4154-ac1b-f771b8f301a4</PackageIdentityName>
@@ -14,48 +14,48 @@
     <RegisteredVersion>1.0.0.0</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\bin\Debug\AppxManifest.xml">
+    <AppXManifest Include="F:\Projects\GitHub\PicBox\Proiect Appchallenge\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2013-11-14T20:41:05.264</Modified>
+      <Modified>2013-11-15T23:40:44.945</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\bin\Debug\Proiect Appchallenge.exe">
+    <AppxPackagedFile Include="F:\Projects\GitHub\PicBox\Proiect Appchallenge\bin\Debug\Proiect Appchallenge.exe">
       <PackagePath>Proiect Appchallenge.exe</PackagePath>
-      <Modified>2013-11-14T21:06:52.693</Modified>
+      <Modified>2013-11-16T05:09:16.879</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\Assets\Logo.scale-100.png">
+    <AppxPackagedFile Include="F:\Projects\GitHub\PicBox\Proiect Appchallenge\Assets\Logo.scale-100.png">
       <PackagePath>Assets\Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2013-11-12T20:40:47.970</Modified>
+      <Modified>2013-11-15T23:33:12.765</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\Assets\SmallLogo.scale-100.png">
+    <AppxPackagedFile Include="F:\Projects\GitHub\PicBox\Proiect Appchallenge\Assets\SmallLogo.scale-100.png">
       <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2013-11-12T20:40:47.972</Modified>
+      <Modified>2013-11-15T23:33:12.765</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\Assets\SplashScreen.scale-100.png">
+    <AppxPackagedFile Include="F:\Projects\GitHub\PicBox\Proiect Appchallenge\Assets\SplashScreen.scale-100.png">
       <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2013-11-14T20:25:20.640</Modified>
+      <Modified>2013-11-15T23:33:12.817</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\Assets\StoreLogo.scale-100.png">
+    <AppxPackagedFile Include="F:\Projects\GitHub\PicBox\Proiect Appchallenge\Assets\StoreLogo.scale-100.png">
       <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2013-11-12T20:40:47.974</Modified>
+      <Modified>2013-11-15T23:33:12.818</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\bin\Debug\App.xbf">
+    <AppxPackagedFile Include="F:\Projects\GitHub\PicBox\Proiect Appchallenge\bin\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2013-11-13T11:02:29.219</Modified>
+      <Modified>2013-11-15T23:33:12.855</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\bin\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="F:\Projects\GitHub\PicBox\Proiect Appchallenge\bin\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2013-11-14T21:04:47.905</Modified>
+      <Modified>2013-11-16T03:59:20.174</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sebastian\Desktop\PicBox\Proiect Appchallenge\bin\Debug\resources.pri">
+    <AppxPackagedFile Include="F:\Projects\GitHub\PicBox\Proiect Appchallenge\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2013-11-14T20:43:35.301</Modified>
+      <Modified>2013-11-15T23:40:43.536</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
