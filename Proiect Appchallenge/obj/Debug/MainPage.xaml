@@ -29,7 +29,7 @@
 
 
             <Button x:ConnectionId='1' x:Name="loadButton" Content="Load image" HorizontalAlignment="Left" Margin="55,139,0,0" VerticalAlignment="Top" Height="65" Width="121" FontSize="36"                         />
-            <Button x:ConnectionId='2' Content="Save" HorizontalAlignment="Left" Margin="1192,271,0,0" VerticalAlignment="Top" Height="55" Width="121"                      FontSize="36"/>
+            <Button x:ConnectionId='2' x:Name="saveButton" Content="Save" HorizontalAlignment="Left" Margin="1192,271,0,0" VerticalAlignment="Top" Height="55" Width="121"                          FontSize="36"/>
 
 
             <ScrollViewer x:Name="scrollPanel" VerticalScrollMode="Disabled" HorizontalAlignment="Left" Height="215" Margin="0,568,0,0" VerticalAlignment="Top" Width="1366" ZoomMode="Disabled" IsTabStop="False" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden">
